@@ -54,7 +54,7 @@ func main() {
     //args = []interface{}{"luqman","cooking"}
 
     var data []Order
-    Db.Select(&data, Db.Rebind(query), args...)
+    Db.Select(&data, Db.Rebind(q), args...)
 }
 
 ```
