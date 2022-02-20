@@ -43,7 +43,7 @@ func main() {
     query := qbor.NewQuery(map[string]interface{}{
         "name$eq": "luqman",
         "age$eq": "", // because empty string, it will be treated as 1 = 1
-        "hobby$eq!": "cooking", // because !, it will be treated as manual field
+        "hobby$eq!": "cooking", // because !, it will be treated as mandatory field
     }).Order("name,-age")
 
     q := `SELECT name FROM USERS`
