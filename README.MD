@@ -88,8 +88,13 @@ func main(){
     bulk := qbor.NewBulkQuery()
     testStructs := []testStruct{
         {"John", 20},
+        {"Ana", 21},
     }
     q, args, err := bulk.BulkQuery(testStructs, q)
+    
+    //q  = INSERT INTO USERS (name, age) VALUES (?,?), (?,?)
+    //args = []interface{}{"John",20,"Ana",21}
+    
     if err != nil {
         log.Println("Error: ", err)
     }
@@ -109,4 +114,11 @@ func main(){
 - OffsetRow(number int32, args string)  //sqlserver
 - Top(number int32, args string) //sqlserver
 - BulkQuery(model interface{}, query string) (string, []interface{}, error)
+
+
+
+License
+----
+
+MIT
 
