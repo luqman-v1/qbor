@@ -27,6 +27,9 @@ QBOR is a tool for simple query building with sqlx
 | ! |  "" | for mandatory field    |
 
 ### Usage
+
+* query builder
+
 ```go
 package main
 
@@ -59,6 +62,44 @@ func main() {
 
 ```
 
+* BulkQuery
+
+```go
+package main
+
+import (
+    "github.com/jmoiron/sqlx"
+    "github.com/luqman-v1/qbor"
+    "log"
+)
+
+type testStruct struct {
+    Name string
+    Age  int
+}
+
+var (
+    Db *sqlx.DB
+)
+
+func main(){
+    //model struct must be same order as query string
+    q := `INSERT INTO USERS (name, age) VALUES {{values}}`
+    bulk := qbor.NewBulkQuery()
+    testStructs := []testStruct{
+        {"John", 20},
+    }
+    q, args, err := bulk.BulkQuery(testStructs, q)
+    if err != nil {
+        log.Println("Error: ", err)
+    }
+    Db.ExecContext(ctx, Db.Rebind(q), args...)
+}
+
+
+```
+
+
 ### API
 
 - Order(sort string)
@@ -67,4 +108,5 @@ func main() {
 - Fetch(number int32, row string, args string) //sqlserver
 - OffsetRow(number int32, args string)  //sqlserver
 - Top(number int32, args string) //sqlserver
+- BulkQuery(model interface{}, query string) (string, []interface{}, error)
 
