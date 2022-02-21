@@ -1,0 +1,11 @@
+language: go
+sudo: false
+go:
+  - 1.17.x
+env:
+  - GO111MODULE=on
+go_import_path: github.com/luqman-v1/qbor
+install:
+  - go mod tidy
+script:
+  -  go test -v ./...
