@@ -1,5 +1,7 @@
 ## QBOR
 
+[![Go Reference](https://pkg.go.dev/badge/pkg.go.dev/github.com/luqman-v1/qbor.svg)](https://pkg.go.dev/pkg.go.dev/github.com/luqman-v1/qbor)
+
 ### What is QBOR?
 
 QBOR is a tool for simple query building with sqlx
